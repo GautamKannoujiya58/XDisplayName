@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 function DisplayFullName() {
   const [fullName, setFullName] = useState(null);
-  useEffect(() => {}, []);
+  //   useEffect(() => {}, []);
   const handleSubmit = (e) => {
+    console.log("Submit clicked");
     e.preventDefault();
     console.log("Form fields >>>", e);
     const firstName = e.target.elements.firstName.value;
@@ -10,7 +11,9 @@ function DisplayFullName() {
     console.log("firstName >>>", firstName, "lastName >>>", lastName);
     setFullName(firstName + " " + lastName);
   };
+  console.log("Submit clicked");
   console.log("fullName >>>", fullName);
+  console.log("Submit clicked");
   return (
     <>
       <h1>Full Name Display</h1>
