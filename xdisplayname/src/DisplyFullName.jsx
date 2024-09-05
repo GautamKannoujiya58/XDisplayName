@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 function DisplayFullName() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlasttName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const handlefirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-  const handleSecondNameChange = (e) => {
-    setlasttName(e.target.value);
-  };
+  const [fullName, setFullName] = useState(null);
+  useEffect(() => {}, []);
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form fields >>>", e);
+    const firstName = e.target.elements.firstName.value;
+    const lastName = e.target.elements.lastName.value;
+    console.log("firstName >>>", firstName, "lastName >>>", lastName);
     setFullName(firstName + " " + lastName);
   };
-
+  console.log("fullName >>>", fullName);
   return (
     <>
       <h1>Full Name Display</h1>
-      <form action="/submit-form" method="POST">
+      <form action="/submit-form" method="POST" onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name:</label>
         <input
-          onChange={handlefirstNameChange}
+          //   onChange={handlefirstNameChange}
           required
           type="text"
           id="firstName"
@@ -29,14 +26,14 @@ function DisplayFullName() {
         <br />
         <label htmlFor="lastName">Last Name:</label>
         <input
-          onChange={handleSecondNameChange}
+          //   onChange={handleSecondNameChange}
           required
           type="text"
           id="lastName"
           name="lastName"
         />
         <br />
-        <button onClick={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
       <h3>Full Name: {fullName}</h3>
     </>
